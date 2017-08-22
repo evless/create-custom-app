@@ -4,7 +4,13 @@
   "description": "",
   "main": "./build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "run-s clean compile run",
+    "clean": "run-p clean:*",
+    "clean:build": "rm -rf build/",
+    "clean:test": "rm -rf test/*",
+    "compile": "babel lib/ -d build/lib",
+    "run": "cd test && node ../bin/create-custom-app"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,19 @@
   "bugs": {
     "url": "https://github.com/evless/create-custom-app/issues"
   },
-  "homepage": "https://github.com/evless/create-custom-app#readme"
+  "bin": {
+    "create-custom-app": "bin/create-custom-app"
+  },
+  "homepage": "https://github.com/evless/create-custom-app#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "npm-run-all": "^4.0.2"
+  },
+  "dependencies": {
+    "inquirer": "^3.2.2",
+    "optimist": "^0.6.1"
+  }
 }
