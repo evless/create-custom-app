@@ -77,8 +77,6 @@ rules:
         - { max: 2, maxBOF: 1 }
     no-whitespace-before-property:
         - error
-    object-property-newline:
-        - error
     quotes:
         - error
         - single
